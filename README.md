@@ -29,7 +29,7 @@ The above advantage of hosting it externally could be seen as a disadvantage by 
 ## Running the app
 
 1. `npm install`
-2. `npm run build:frontend` - build the browser part (`/browser-frontend`), as it's not served from a live server
+2. `npm run build:browser` - build the browser part (`/browser-frontend`), as it's not served from a live server
 3. `npm run dev` - run the Electron app (`/electron`) and server the renderer Svelte (`/electron-frontend`) from a live server)
 
 ## Packaging the app (Svelte Frontend + Browser + Electron)
