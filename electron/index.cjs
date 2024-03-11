@@ -41,7 +41,7 @@ if (!gotTheLock) {
 
 const createWindow = () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  CONTEXT.mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -52,13 +52,13 @@ const createWindow = () => {
 
   // Check whether to load the live server (dev) or the final build (prod)
   if (CONTEXT.isDevEnvironment) {
-    mainWindow.loadURL(`http://localhost:${SVELTE_PORT}/`);
+    CONTEXT.mainWindow.loadURL(`http://localhost:${SVELTE_PORT}/`);
 
-    mainWindow.webContents.on("did-frame-finish-load", () => {
-      mainWindow.webContents.openDevTools();
+    CONTEXT.mainWindow.webContents.on("did-frame-finish-load", () => {
+      CONTEXT.mainWindow.webContents.openDevTools();
     });
   } else {
-    mainWindow.loadFile(path.join(__dirname, "frontend", "index.html"));
+    CONTEXT.mainWindow.loadFile(path.join(__dirname, "frontend", "index.html"));
   }
 };
 

@@ -16,11 +16,11 @@ const registerProtocol = (app, context) => {
   if (!gotTheLock) {
     app.quit();
   } else {
-    const { mainWindow, handleDeeplinkCallback } = context;
-
     // If a second instance pops up, just focus the current window
     // This is triggered when a deeplinks is launched (Windows, Linux)
     app.on("second-instance", (event, commandLine, workingDirectory) => {
+      const { mainWindow, handleDeeplinkCallback } = context;
+
       if (mainWindow) {
         if (mainWindow.isMinimized()) mainWindow.restore();
         mainWindow.focus();
@@ -36,6 +36,8 @@ const registerProtocol = (app, context) => {
 
     // MacOS' way of dealing with deeplinks
     app.on("open-url", (event, url) => {
+      const { handleDeeplinkCallback } = context;
+
       if (!handleDeeplinkCallback) {
         console.error("You need to have a callback handler in your context.");
       } else {
