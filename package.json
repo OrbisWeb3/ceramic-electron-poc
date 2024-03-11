@@ -1,0 +1,54 @@
+{
+  "name": "ceramic-electron-did",
+  "productName": "ceramic-electron-did",
+  "version": "1.0.0",
+  "description": "Integrating Ceramic's DIDSession with Electron deeplinks.",
+  "main": "electron/index.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm run dev:vite:frontend\" \"npm run dev:electron\"",
+    "dev:vite:frontend": "vite --config vite-electron.config.js",
+    "dev:vite:browser": "vite --config vite-browser.config.js",
+    "dev:electron": "cross-env DEV_ENV=true electron .",
+    "build:frontend": "vite build --config vite-electron.config.js",
+    "build:browser": "vite build --config vite-browser.config.js",
+    "package:all": "npm run build:frontend && npm run build:browser && electron-forge package",
+    "package:electron": "electron-forge package",
+    "make:all": "npm run build:frontend && npm run build:browser && electron-forge make",
+    "make:electron": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.3.0",
+    "@electron-forge/maker-deb": "^7.3.0",
+    "@electron-forge/maker-rpm": "^7.3.0",
+    "@electron-forge/maker-squirrel": "^7.3.0",
+    "@electron-forge/maker-zip": "^7.3.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.3.0",
+    "@electron-forge/plugin-fuses": "^7.2.0",
+    "@electron/fuses": "^1.7.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "29.1.0",
+    "svelte": "^4.2.12",
+    "vite": "^5.1.4"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Donat Andelic",
+    "email": "34493754+donatandelic@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@ceramicnetwork/http-client": "^5.2.0",
+    "@ceramicnetwork/stream-model-instance": "^4.2.0",
+    "@ceramicnetwork/streamid": "^5.0.0",
+    "@didtools/cacao": "^3.0.1",
+    "@stablelib/random": "^1.0.2",
+    "did-session": "^3.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "npm": "^10.5.0",
+    "uninstall": "^0.0.0",
+    "vite-plugin-node-polyfills": "^0.21.0"
+  }
+}
