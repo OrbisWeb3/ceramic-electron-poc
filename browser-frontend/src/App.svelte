@@ -21,6 +21,8 @@
     setTimeout(() => window.close(), timeout * 1000);
   }
 
+  // Alternatively, you could replace this with an
+  // OrbisDB or ComposeDB authentication/session
   const getDIDSession = async () => {
     // Connect/Enable the provider
     await provider.connect();
@@ -36,8 +38,21 @@
     const siwe = createCeramicSiweMessage({
       address,
       siwxOpts: {
-        // above generated did:key
+        // above generated did:key (string)
         uri: didKey.id,
+
+        // session expiration time
+        // by default the below will be set to 3 months
+        // ceramicSiwe.js L34
+        // expirationTime: new Date("expiration_date_here").toISOString(),
+
+        // provide custom resources
+        // by default this will fall back to ceramic://* (all Ceramic resources)
+        // instead you can narrow down the scope by providing
+        // an array of Stream and/or Model IDs to which DIDSession will have
+        // write access to
+        // ceramicSiwe.js L38
+        // resources: [],
       },
     });
 

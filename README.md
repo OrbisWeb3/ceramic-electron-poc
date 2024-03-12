@@ -3,6 +3,9 @@
 Combining Electron's deep links with Ceramic's DIDSession to achieve authorization in the browser.\
 Powered by Electron (Forge) and Svelte.
 
+It's a basic framework for passing data between Electron and the user's default browser.\
+In this instance, it's used to request a Metamask signature (authorizing a `DIDSession`) before passing it back to Electron.
+
 > [!WARNING]
 > Application protocol registration does not work in development on Linux and MacOS.
 > You need to package the app before testing out these features.
@@ -13,6 +16,9 @@ Electron app will spin up a local server (`/electron/runServer.cjs`) to serve th
 I'd recommend hosting this part so you can further modify the connection page (ie. add additional providers, update the style) without having to redistribute the app.
 
 The above advantage of hosting it externally could be seen as a disadvantage by some, since hosting it locally (somewhat) prevents modifications and opportunities to modify the signing behavior (malware injection).
+
+This app provides a barebones authentication flow with `DIDSession` as a framework.\
+The actual authentication (data exchange) could be anything serializable, including `OrbisDB` sessions.
 
 ## File structure
 

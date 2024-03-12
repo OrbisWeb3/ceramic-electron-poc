@@ -14,6 +14,9 @@
       `[${Date.now()}] ${typeof message !== "string" ? JSON.stringify(message) : message}`,
     ]);
 
+  // This implementation assumes raw DIDSession
+  // Alternatively, you could replace it with OrbisDB or ComposeDB
+  // authentication mechanisms and sessions
   const requestSession = async () => {
     // Request reference, can be an hmac or something
     // It can be used to verify the response further down
@@ -68,6 +71,8 @@
     // This is the simplest model I could find on testnet
     // https://cerscan.com/testnet-clay/stream/kjzl6hvfrbw6c6ngtt7harvn6qb4g1t5rt7wa1yt4giolyi6pxbyti1gjf9tv8k
     try {
+      // Create a Stream using the above Recipe Model
+      // This could be replaced by an OrbisDB or ComposeDB call
       const document = await ModelInstanceDocument.create(
         ceramic,
         {
